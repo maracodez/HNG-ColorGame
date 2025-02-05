@@ -21,9 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     //function to initialize the game
-    function initGame() {
-        //reset colors
+    function initGame(keepScore = false) {
+       if (!keepScore) {
+        //reset score if it's a new game
         score = 0;
+       }
         scoreElement.textContent = score;
     
         //set target color
@@ -64,8 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
             colorBox.classList.add('correct')
             setTimeout(() => {
                 colorBox.style.borderColor = "#000";
-                 colorBox.classlist.remove('correct')
-                initGame()
+                //colorBox.classlist.remove('correct')
+                
+                initGame(true)
             }, 1000);
         } else {
             gameStatus.textContent = "Wrong guess😪! Try again";
@@ -80,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     //event listener for new game btn
-    newGameButton.addEventListener('click', initGame);
+    newGameButton.addEventListener('click', () => initGame(false));
     
     //initialize the game on page load
     initGame()
