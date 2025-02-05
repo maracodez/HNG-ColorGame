@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+   background-image: url("./assets/hero.jpg");
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+}
+
+.container {
+    background-color: transparent;
+    width: 400px;
+    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    /* margin-top: 2%; */
+    padding: 20px;
+}
+
+@keyframes effect {
+    0% {
+        background: linear-gradient(#805700, #13eb13);
+        -webkit-background-clip: text;
+    }
+
+    100% {
+        background: linear-gradient(#723ce7, #ff0011);
+        -webkit-background-clip: text;
+    }
+}
+
+h1 {
+    font-size: 2.3rem;
+    font-family: serif;
+    color: transparent;
+    text-align: center;
+    animation: effect 2s linear infinite;
+}
+
+.colorbox {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    border: 2px solid #000;
+}
+
+@keyframes celebrate {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.correct {
+    animation: celebrate 0.5s ease-in-out 2;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+.wrong {
+    animation: fadeOut 1s forwards;
+}
+
+p {
+    font-size: 1.4rem;
+    color: #0b61bc;
+    font-weight: 600;
+}
+
+.coloroptions {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-top: 4%;
+}
+
+.coloroptions button {
+    border: none;
+    width: 25%;
+    height: 12vh;
+    border-radius: 25px;
+    margin-top: 4%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#colorOption_btn:hover {
+    transform: scale(1.1);
+}
+
+.game_status {
+    font-size: 1.1rem;
+    padding: 15px;
+    font-style: italic;
+}
+
+button[data-testid="newGameButton"] {
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 3%;
+}
+
+button[data-testid="newGameButton"]:hover {
+    background-color: #0056b3;
+}
