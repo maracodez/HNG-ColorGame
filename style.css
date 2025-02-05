@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-   background-image: url("./assets/hero.jpg");
+   background-image: url("./assets/background-8874087_1280.jpg");
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
@@ -73,13 +73,17 @@ h1 {
 }
 
 .wrong {
-    animation: fadeOut 1s forwards;
+    animation: fadeOut 0.6s forwards;
 }
 
-p {
+#game_instructions {
     font-size: 1.4rem;
     color: #0b61bc;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.2px solid black;
+    width: fit-content;
 }
 
 .coloroptions {
@@ -89,7 +93,7 @@ p {
     justify-content: center;
     align-items: center;
     gap: 5%;
-    margin-top: 4%;
+    margin-top: 3%;
 }
 
 .coloroptions button {
@@ -97,7 +101,7 @@ p {
     width: 25%;
     height: 12vh;
     border-radius: 25px;
-    margin-top: 4%;
+    margin-top: 3%;
     cursor: pointer;
     transition: transform 0.2s;
 }
@@ -113,14 +117,15 @@ p {
 }
 
 button[data-testid="newGameButton"] {
-    padding: 10px 20px;
+    padding: 10px 25px;
     font-size: 1.4rem;
+    font-weight: 600;
     border: none;
     border-radius: 5px;
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 button[data-testid="newGameButton"]:hover {

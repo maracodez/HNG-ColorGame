@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //predefined set of colors
     const colors = [
         "#ff5733", "#33ff57", "#3357ff", "#f333ff", "#33fff5", "#ffc300",
-        "#c70039", "#900c3f", "#581845", "#1a5276", "#1e8449", "b7950b"
+        "#c70039", "#900c3f", "#581845", "#1a5276", "#1e8449", "b7950b",
+        "#ccc", "#fff", "#000", "#00ffff", "#696969", "#808080", "#0000ff"
     ]
     
     //function to generate a random color from the predefined colors
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedColor === targetColor) {
             gameStatus.textContent = "Correct! 🎉";
             score++;
-            
             scoreElement.textContent = score;
             colorBox.style.borderColor = "green";
             colorBox.classList.add('correct')
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             colorBox.classList.add('wrong')
             setTimeout(() => {
                 colorBox.style.borderColor = "#000";
-             colorBox.classList.remove('wrong')
+                colorBox.classList.remove('wrong')
             }, 500)
         }
     }
@@ -85,4 +85,19 @@ document.addEventListener('DOMContentLoaded', function() {
     //initialize the game on page load
     initGame()
     
+
+    //function for typewriting text
+    const text = "Guess the correct color!";
+    const element = document.getElementById("game_instructions");
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 50)
+        }
+    }
+
+    type()
 })
