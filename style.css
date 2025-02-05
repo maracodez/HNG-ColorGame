@@ -131,3 +131,25 @@ button[data-testid="newGameButton"] {
 button[data-testid="newGameButton"]:hover {
     background-color: #0056b3;
 }
+
+@media screen and (max-width: 890px) {
+    .container {
+        margin-top: 10%;
+    }
+
+    .coloroptions button {
+        width: 30%;
+        height: 10vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        margin-top: 10%;
+    }
+
+    .coloroptions button {
+        width: 30%;
+        height: 12vh;
+    }
+}
