@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameStatus = document.querySelector('[data-testid="gameStatus"]');
     const scoreElement = document.querySelector('[data-testid="score"]');
     const resetGameButton = document.querySelector('[data-testid="resetGameButton"]');
+    const newGameButton = document.querySelector('[data-testid="newGameButton"]');
 
     //scoreboard
     const scoreboard = document.createElement("div");
@@ -111,10 +112,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateScoreboard()
     }
+
+    function startNewGame() {
+        score = 0;
+        wins =  0;
+        fails = 0;
+        updateScoreboard();
+        initGame(false)
+    }
     
     
     //event listener for new game btn
     resetGameButton.addEventListener('click', () => initGame(false));
+    newGameButton.addEventListener('click', startNewGame);
     
     //initialize the game on page load
     initGame()
