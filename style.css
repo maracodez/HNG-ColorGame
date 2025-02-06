@@ -50,6 +50,22 @@ h1 {
     animation: effect 2s linear infinite;
 }
 
+#more_instructions {
+    text-align: center;
+    color: #0056b3;
+    font-size: 1.1rem;
+    display: none;
+}
+
+#instructions {
+    cursor: pointer;
+}
+
+#instructions:hover {
+    color: #ff0011;
+    transform: scale(1.1);
+}
+
 .colorbox {
     width: 150px;
     height: 150px;
@@ -74,6 +90,13 @@ h1 {
 
 .wrong {
     animation: fadeOut 0.6s forwards;
+}
+
+div[data-testid="score"] {
+    display: flex;
+    gap: 5%;
+    width: 50%;
+
 }
 
 #game_instructions {
@@ -106,7 +129,7 @@ h1 {
     transition: transform 0.2s;
 }
 
-#colorOption_btn:hover {
+.coloroptions button:hover {
     transform: scale(1.1);
 }
 
@@ -116,7 +139,7 @@ h1 {
     font-style: italic;
 }
 
-button[data-testid="newGameButton"] {
+button[data-testid="resetGameButton"] {
     padding: 10px 25px;
     font-size: 1.4rem;
     font-weight: 600;

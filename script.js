@@ -1,12 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.container')
     const colorBox = document.querySelector('[data-testid="colorBox"]');
     const colorOptions = document.querySelector('.coloroptions');
     const gameStatus = document.querySelector('[data-testid="gameStatus"]');
     const scoreElement = document.querySelector('[data-testid="score"]');
-    const newGameButton = document.querySelector('[data-testid="newGameButton"]');
+    const resetGameButton = document.querySelector('[data-testid="resetGameButton"]');
+
+    //scoreboard
+    const scoreboard = document.createElement("div");
+    scoreboard.classList.add("scoreboard")
+
+
+    //new elements for tracking wins & fails
+    const winElement = document.createElement("div");
+    winElement.textContent = "Wins: 0";
+    scoreboard.appendChild(winElement);
+
+    const failedElement = document.createElement("div");
+    failedElement.textContent = "Fails: 0";
+    scoreboard.appendChild(failedElement);
+
+   
     
     let score = 0;
     let targetColor;
+    let wins = 0;
+    let fails = 0;
     
     //predefined set of colors
     const colors = [
@@ -19,14 +38,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function getRandomColors() {
         return colors[Math.floor(Math.random() * colors.length)]
     }
+
+    function updateScoreboard() {
+        scoreElement.innerHTML = `
+        <p>Score: ${score}</p>
+        <p>Wins: ${wins}</p>
+        <p>Fails: ${fails}</p>
+        `
+    }
     
     //function to initialize the game
     function initGame(keepScore = false) {
        if (!keepScore) {
         //reset score if it's a new game
         score = 0;
+        wins = 0;
+        fails = 0;
        }
-        scoreElement.textContent = score;
+        updateScoreboard()
     
         //set target color
         targetColor = getRandomColors();
@@ -61,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedColor === targetColor) {
             gameStatus.textContent = "Correct! 🎉";
             score++;
-            scoreElement.textContent = score;
+            wins++;
             colorBox.style.borderColor = "green";
             colorBox.classList.add('correct')
             setTimeout(() => {
@@ -72,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         } else {
             gameStatus.textContent = "Wrong guess😪! Try again";
+            fails++;
             colorBox.style.borderColor = "red";
             colorBox.classList.add('wrong')
             setTimeout(() => {
@@ -79,11 +109,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 colorBox.classList.remove('wrong')
             }, 500)
         }
+        updateScoreboard()
     }
     
     
     //event listener for new game btn
-    newGameButton.addEventListener('click', () => initGame(false));
+    resetGameButton.addEventListener('click', () => initGame(false));
     
     //initialize the game on page load
     initGame()
@@ -103,4 +134,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     type()
+
+    const texts = document.getElementById("more_instructions");
+
+    function handleInstruction() {
+        if (texts.style.display === "none" || texts.style.display === "") {
+            texts.style.display = "block";
+        } else {
+            texts.style.display = "none"
+        }
+    }
+
+    document.getElementById("instructions").addEventListener("click", handleInstruction)
 })
