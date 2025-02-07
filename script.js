@@ -12,11 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     scoreboard.classList.add("scoreboard")
 
 
-    //new elements for tracking wins & fails
-    const winElement = document.createElement("div");
-    winElement.textContent = "Wins: 0";
-    scoreboard.appendChild(winElement);
-
+    //new elements for tracking fails
     const failedElement = document.createElement("div");
     failedElement.textContent = "Fails: 0";
     scoreboard.appendChild(failedElement);
@@ -25,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let score = 0;
     let targetColor;
-    let wins = 0;
     let fails = 0;
     
     //predefined set of colors
@@ -43,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateScoreboard() {
         scoreElement.innerHTML = `
         <p>Score: ${score}</p>
-        <p>Wins: ${wins}</p>
         <p>Fails: ${fails}</p>
         `
     }
@@ -53,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
        if (!keepScore) {
         //reset score if it's a new game
         score = 0;
-        wins = 0;
         fails = 0;
        }
         updateScoreboard()
@@ -91,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedColor === targetColor) {
             gameStatus.textContent = "Correct! 🎉";
             score++;
-            wins++;
             colorBox.style.borderColor = "green";
             colorBox.classList.add('correct')
             setTimeout(() => {
@@ -115,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startNewGame() {
         score = 0;
-        wins =  0;
         fails = 0;
         updateScoreboard();
         initGame(false)

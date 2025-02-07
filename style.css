@@ -59,6 +59,7 @@ h1 {
 
 #instructions {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 #instructions:hover {
@@ -94,6 +95,8 @@ h1 {
 
 div[data-testid="score"] {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 5%;
     width: 50%;
 
